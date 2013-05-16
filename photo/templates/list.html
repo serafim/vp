@@ -1,7 +1,16 @@
 {% extends "base.html" %}
 
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/list.css">
+{% endblock %}
+
 {% block content %}
+    <div>
     {% for photo in photos %}
-        <a href="{% url "photo" photo.id %}">{{ photo.title }}</a>
+        <div class="thumb">
+            <a href="{% url "photo" photo.id %}"><img src="/thumb/{{ photo.photo }}" width="152" height="114"></a>
+        </div>
     {% endfor %}
+        <div class="clear"></div>
+    </div>
 {% endblock %}

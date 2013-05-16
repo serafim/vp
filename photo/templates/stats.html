@@ -1,10 +1,26 @@
 {% extends "base.html" %}
 
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/stats.css">
+{% endblock %}
+
 {% block content %}
-    Ваш ID: {{ user_id }}
-    <div>
+    {% if photos %}
+        Ваш ID: {{ user_id }}
+        <table class="stats">
         {% for photo in photos %}
-            {{ photo.title }} / {{ photo.vote_set.all.count }}
+            <tr>
+                <td>
+                    <a href="{% url "photo" photo.id %}"><img src="/thumb/{{ photo.photo }}" width="152" height="114"></a>
+                </td>
+                <td>
+                    Название: {{ photo.title }}<br>
+                    Голосов: {{ photo.vote_set.all.count }}
+                </td>
+            </tr>
         {% endfor %}
-    </div>
+        </table>
+    {% else %}
+        После загрузки фотографий, здесь вы увидите их статистику голосования.
+    {% endif %}
 {% endblock %}

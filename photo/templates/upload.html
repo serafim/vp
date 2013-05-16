@@ -1,9 +1,28 @@
 {% extends "base.html" %}
 
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/upload.css">
+{% endblock %}
+
 {% block content %}
-    <form method="post" name="uploadphoto" enctype="multipart/form-data" action="{% url "upload" %}">
-    {% csrf_token %}
-    {{ form.as_ul }}
-    <input type="submit">
+    <form method="post" name="upload" enctype="multipart/form-data" action="{% url "upload" %}">
+        {% csrf_token %}
+        <table class="upload">
+            <tr>
+                <td>Название фотографии:</td>
+                <td>{{ form.title }}{% if form.title.errors %}{{ form.title.errors }}{% endif %}</td>
+            </tr>
+            <tr>
+                <td>Ваше Имя:</td>
+                <td>{{ form.author }}{% if form.author.errors %}{{ form.author.errors }}{% endif %}</td>
+            </tr>
+            <tr>
+                <td>Фотография (макс. 32Мб):</td>
+                <td>{{ form.photo }}{% if form.photo.errors %}{{ form.photo.errors }}{% endif %}</td>
+            </tr>
+            <tr>
+                <td colspan="2" class="upload"><input type="submit" value="Загрузить" class="upload"></td>
+            </tr>
+        </table>
     </form>
 {% endblock %}

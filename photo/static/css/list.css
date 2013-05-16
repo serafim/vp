@@ -1,0 +1,10 @@
+div.thumb {
+    float: left;
+    width: 152px;
+    height: 114px;
+    margin: 3px;
+}
+
+div.clear {
+    clear: both;
+}

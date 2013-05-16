@@ -1,0 +1,21 @@
+table.photo {
+    width: 100%;
+}
+
+td.header {
+    width: 90px;
+}
+
+td.vote {
+    width: 50%;
+    text-align: center;
+}
+
+div.photo {
+    width: 480px;
+    text-align: center;
+}
+
+div.photo span {
+    font-size: 0.8em;
+}

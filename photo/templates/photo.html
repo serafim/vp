@@ -1,16 +1,34 @@
 {% extends "base.html" %}
 
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/photo.css">
+{% endblock %}
+
 {% block content %}
-    <div class="info">
-        Автор: {{ photo.author }}
-        Название: {{ photo.title }}
+    <table class="photo">
+        <tr>
+            <td class="header">Автор:</td>
+            <td>{{ photo.author }}</td>
+        </tr>
+        <tr>
+            <td class="header">Название:</td>
+            <td>{{ photo.title }}</td>
+        </tr>
+    </table>
+    <table class="photo">
+        <tr>
+            <td class="vote">Голосов за фото: <strong>{{ photo.vote_set.all.count }}</strong></td>
+            <td class="vote">
+                {% if vote_available %}
+                    <a href="{% url "vote" photo.id %}">Голосовать!</a>
+                {% else %}
+                    Спасибо за ваш голос.
+                {% endif %}
+            </td>
+        </tr>
+    </table>
+    <div class="photo">
+        <img src="/normal/{{ photo.photo }}">
+        <span>(<a href="{{ MEDIA_URL }}{{ photo.photo }}" target="_blank">открыть оригинал</a>)</span>
     </div>
-    <div class="vote">
-        {% if vote_available %}
-            <a href="{% url "vote" photo.id %}">Голосовать!</a>
-        {% else %}
-            Спасибо, ваш голос за то фото принят.
-        {% endif %}
-    </div>
-    <div class="photo"><img src="{{ MEDIA_URL }}{{ photo.photo }}"></div>
 {% endblock %}

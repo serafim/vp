@@ -1,0 +1,15 @@
+body {
+    background: url('../img/header.jpg') no-repeat 50% 0 #e7ebee;
+    font-family: Verdana, sans-serif;
+}
+
+div.menu {
+    margin: 110px auto 0;
+    width: 480px;
+    text-align: center;
+}
+
+div.content {
+    margin: 10px auto 0;
+    width: 480px;
+}
