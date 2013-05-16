@@ -16,6 +16,9 @@ DATABASES = {
         'PASSWORD': 'vp',
         'HOST': '',
         'PORT': '',
+        'OPTIONS': {
+            'init_command': 'SET storage_engine=INNODB;',
+        },
     }
 }
 
@@ -29,7 +32,6 @@ SITE_ID = 1
 USE_I18N = True
 USE_L10N = True
 USE_TZ = False
-
 
 import os
 
@@ -45,7 +47,6 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
-
 
 SECRET_KEY = '-p1r59nhmlq^&6mf8uzd)r@1nkp)b(wc_%tgnfa#$q$0fdo-#3'
 
@@ -79,7 +80,6 @@ INSTALLED_APPS = (
     'core',
     'photo',
 )
-
 
 LOGGING = {
     'version': 1,
