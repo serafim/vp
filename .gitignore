@@ -1,4 +1,5 @@
 local_settings.py
+production.py
 *.py[cod]
 
 # C extensions
