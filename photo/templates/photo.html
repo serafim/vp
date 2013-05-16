@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="info">
+        Автор: {{ photo.author }}
+        Название: {{ photo.title }}
+    </div>
+    <div class="vote">
+        {% if vote_available %}
+            <a href="{% url "vote" photo.id %}">Голосовать!</a>
+        {% else %}
+            Спасибо, ваш голос за то фото принят.
+        {% endif %}
+    </div>
+    <div class="photo"><img src="{{ MEDIA_URL }}{{ photo.photo }}"></div>
+{% endblock %}
