@@ -105,4 +105,4 @@ LOGGING = {
     }
 }
 
-VIDEO_SOURCE = 'http://192.168.200.1/live/video/manifest.f4m'
+VIDEO_SOURCE = 'http://192.168.200.1/'

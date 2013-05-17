@@ -7,22 +7,31 @@
 {% endblock %}
 
 {% block content %}
-  <div id="live"></div>
-  <script type="text/javascript">
-   var flashvars = {
-    src: "{{ video_source }}",
-    autoPlay: true
-   };
-   var paramObj = {
-    allowScriptAccess: "always",
-    allowFullScreen: "true",
-    allowNetworking: "all"
-   };
-   swfobject.embedSWF(
-    "{{ STATIC_URL }}swf/StrobeMediaPlayback.swf", "live", 480, 300, "10.3",
-    "{{ STATIC_URL }}swf/expressInstall.swf", flashvars, paramObj, {
-     name: "StrobeMediaPlayback"
-    }
-   );
-  </script>
+    <div id="live"></div>
+    <script type="text/javascript">
+        if ((/(iPhone|iPod|iPad)/.test(navigator.userAgent) && !/(4\.0\.3|4\.0\.4)/.test(navigator.userAgent)) ||
+                (/(Safari)/.test(navigator.userAgent) && /(Macintosh)/.test(navigator.userAgent))) {
+            var live = document.getElementById("live");
+            live.innerHTML = '<video controls width="480" height="300">' +
+                    '<source src="{{ video_source }}hls/index.m3u8" type="application/vnd.apple.mpegurl">' +
+                    '</video>';
+        } else {
+            var flashvars = {
+                src: "{{ video_source }}live/video/manifest.f4m",
+                autoPlay: true
+            };
+            var paramObj = {
+                allowScriptAccess: "always",
+                allowFullScreen: "true",
+                allowNetworking: "all"
+            };
+            swfobject.embedSWF(
+                    "{{ STATIC_URL }}swf/StrobeMediaPlayback.swf", "live", 480, 300, "10.3",
+                    "{{ STATIC_URL }}swf/expressInstall.swf", flashvars, paramObj, {
+                        name: "StrobeMediaPlayback"
+                    }
+            );
+        }
+
+    </script>
 {% endblock %}
