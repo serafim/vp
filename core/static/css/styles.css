@@ -1,15 +1,16 @@
 body {
-    background: url('../img/header.jpg') no-repeat 50% 0 #e7ebee;
+    background: url('../img/header.jpg') no-repeat 0 0 #e7ebee;
     font-family: Verdana, sans-serif;
+    width: 480px;
 }
 
 div.menu {
-    margin: 110px auto 0;
+    margin: 110px 0 0;
     width: 480px;
     text-align: center;
 }
 
 div.content {
-    margin: 10px auto 0;
+    margin: 10px 0 0;
     width: 480px;
 }
