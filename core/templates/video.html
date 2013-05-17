@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block css %}{% endblock %}
+
+{% block js %}
+    <script type="text/javascript" src="{{ STATIC_URL }}js/swfobject.js"></script>
+{% endblock %}
+
+{% block content %}
+  <div id="live"></div>
+  <script type="text/javascript">
+   var flashvars = {
+    src: "{{ video_source }}",
+    autoPlay: true
+   };
+   var paramObj = {
+    allowScriptAccess: "always",
+    allowFullScreen: "true",
+    allowNetworking: "all"
+   };
+   swfobject.embedSWF(
+    "{{ STATIC_URL }}swf/StrobeMediaPlayback.swf", "live", 480, 300, "10.3",
+    "{{ STATIC_URL }}swf/expressInstall.swf", flashvars, paramObj, {
+     name: "StrobeMediaPlayback"
+    }
+   );
+  </script>
+{% endblock %}

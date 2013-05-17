@@ -4,13 +4,15 @@
     <title>Тауш 2013</title>
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/styles.css">
     {% block css %}{% endblock %}
+    {% block js %}{% endblock %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 </head>
 <body>
 <div class="menu">
     <a href="{% url "index" %}">Фотографии</a> |
     <a href="{% url "upload" %}">Загрузить</a> |
-    <a href="{% url "stats" %}">Ваши фотографии</a>
+    <a href="{% url "stats" %}">Ваши фотографии</a> |
+    <a href="{% url "video" %}">Видео</a>
 </div>
 <div class="content">
     {% block content %}{% endblock %}
