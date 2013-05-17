@@ -9,7 +9,7 @@
 {% block content %}
     <div id="live"></div>
     <script type="text/javascript">
-        if ((/(iPhone|iPod|iPad)/.test(navigator.userAgent) && !/(4\.0\.3|4\.0\.4)/.test(navigator.userAgent)) ||
+        if (/(iPhone|iPod|iPad|Android)/.test(navigator.userAgent) ||
                 (/(Safari)/.test(navigator.userAgent) && /(Macintosh)/.test(navigator.userAgent))) {
             var live = document.getElementById("live");
             live.innerHTML = '<video controls width="480" height="300">' +
